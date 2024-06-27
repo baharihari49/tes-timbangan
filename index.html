@@ -24,6 +24,9 @@
         const weightElement = document.getElementById('weight');
         const ws = new WebSocket('ws://localhost:3000');
 
+        // const weightElement = document.getElementById('weight');
+        // const ws = new WebSocket('ws://89.116.121.153/:3000');
+
         ws.onmessage = function(event) {
             weightElement.textContent = event.data;
         };
