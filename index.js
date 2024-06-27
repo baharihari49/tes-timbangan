@@ -15,6 +15,18 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+
+app.get('/read-file', (req, res) => {
+    const filePath = 'C:\\IDZec_Weight\\Berat.txt'; // Ganti dengan path file Anda
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return res.status(500).send('Error reading file');
+        }
+        res.send(data);
+    });
+});
+
 // Watch the file for changes
 const watcher = chokidar.watch('C:\\IDZec_Weight\\Berat.txt', {
     persistent: true,
