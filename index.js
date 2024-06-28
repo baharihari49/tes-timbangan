@@ -50,39 +50,9 @@ app.post('/data', (req, res) => {
     });
 });
 
-// Watch the file for changes
-// const watcher = chokidar.watch('C:\\IDZec_Weight\\Berat.txt', {
-//     persistent: true,
-//     usePolling: true,
-//     interval: 1,  // Check every 1 millisecond
-// });
-
-// watcher.on('change', (filePath) => {
-//     fs.readFile(filePath, 'utf8', (err, data) => {
-//         if (err) {
-//             console.error('Error reading file:', err);
-//             return;
-//         }
-
-//         fs.writeFile(fileName, data, (err) => {
-//             if (err) {
-//                 console.error('Error writing file:', err);
-//             } else {
-//                 console.log('File berhasil dibuat atau diupdate!');
-//             }
-
-//             // Kirim data ke semua klien yang terhubung
-//             wss.clients.forEach(client => {
-//                 if (client.readyState === WebSocket.OPEN) {
-//                     client.send(data);
-//                 }
-//             });
-//         });
-//     });
-// });
 
 // server.listen(port,() => {
-//     console.log(`Server running at http://0.0.0.0:${port}`);
+//     console.log(`Server running at http://localhost:${port}`);
 // });
 
 server.listen(port, '0.0.0.0',() => {
