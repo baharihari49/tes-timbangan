@@ -6,7 +6,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 443;  // Port default untuk HTTPS
+const port = 8443;  // Port default untuk HTTPS
 
 // Baca sertifikat SSL/TLS
 const privateKey = fs.readFileSync('/etc/letsencrypt/live/con-weight.dhk.co.id/privkey.pem', 'utf8');
