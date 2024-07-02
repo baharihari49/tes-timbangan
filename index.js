@@ -1,14 +1,22 @@
 const express = require('express');
 const WebSocket = require('ws');
-const chokidar = require('chokidar');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 3000;
+const port = 443;  // Port default untuk HTTPS
 
-const server = require('http').createServer(app);
+// Baca sertifikat SSL/TLS
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/con-weight.dhk.co.id/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/con-weight.dhk.co.id/cert.pem', 'utf8');
+const ca = fs.readFileSync('/etc/letsencrypt/live/con-weight.dhk.co.id/chain.pem', 'utf8');
+
+const credentials = { key: privateKey, cert: certificate, ca: ca };
+
+// Buat server HTTPS
+const server = https.createServer(credentials, app);
 const wss = new WebSocket.Server({ server });
 
 // Middleware untuk mengurai body dari request POST
@@ -50,11 +58,6 @@ app.post('/data', (req, res) => {
     });
 });
 
-
-// server.listen(port,() => {
-//     console.log(`Server running at http://localhost:${port}`);
-// });
-
-server.listen(port, '0.0.0.0',() => {
-    console.log(`Server running at http://0.0.0.0:${port}`);
+server.listen(port, '0.0.0.0', () => {
+    console.log(`Server running at https://0.0.0.0:${port}`);
 });
