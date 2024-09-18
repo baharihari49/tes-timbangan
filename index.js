@@ -58,6 +58,6 @@ app.post('/data', (req, res) => {
     });
 });
 
-server.listen(port, '89.116.121.153', () => {
-    console.log(`Server running at https://89.116.121.153:${port}`);
+server.listen(port, '147.79.67.38', () => {
+    console.log(`Server running at https://147.79.67.38:${port}`);
 });
